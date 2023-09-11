@@ -44,3 +44,69 @@ form {
   border-radius: 5px;
   margin-left: 10px;
 }
+
+.search_results {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.search_result {
+  margin-bottom: 60px;
+  width: 30%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 6px (0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.search_result img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.search_result:hover img {
+  opacity: 0.8;
+}
+
+.search_result a {
+  font-size: 20px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+#show_more_button {
+  padding: 10px 20px;
+  background-color: #138060;
+  color: #fff;
+  box-shadow: 0 0 6px (0, 0, 0, 0.2);
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 30px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  display: none;
+}
+
+@media screen and (max-width: 1080px) {
+  .search_results {
+    padding: 20px;
+  }
+  .search_result {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .search_result {
+    width: 100%;
+  }
+}
