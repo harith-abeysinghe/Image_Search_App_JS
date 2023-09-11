@@ -26,5 +26,23 @@ async function search_images(){
     results.map((result) =>{
         const img_wrapper = document.createElement("div")
         img_wrapper.classList.add("search_result")
-    })
+
+        const image = document.createElement('img')
+        image.src = result.urls.small
+        image.alt = result.alt_description
+
+        const img_link = document.createElement('a')
+        img_link.href = result.links.innerHTML
+        img_link.target = "_blank"
+        img_link.textContent = result.alt_description
+
+        img_wrapper.appendChild(image)
+        img_wrapper.appendChild(img_link)
+        img_wrapper.appendChild(img_wrapper)
+        
+    });
+    page++
+    if(page>1){
+        show_more.style.display ="block"
+    }
 }
