@@ -3,7 +3,7 @@ const access_key = "_leSm6EuqT4K-CXcwqPMJuKd_2r4D6FlknVf_a-6Ug0"
 const formInput = document.querySelector("form")
 const input_section = document.getElementById("search_input")
 
-const search_results = document.querySelector(".seacrh_results")
+const search_results = document.querySelector(".search_results")
 
 const show_more = document.getElementById("show_more_button")
 
@@ -12,7 +12,7 @@ let page = 1;
 
 async function search_images(){
     input_data = input_section.value;
-    const url = "https://api.unsplash.com/search/photos?page=${page}&query=${input_data}&client_id=${access_key}"
+    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${input_data}&client_id=${access_key}`
 
     const response = await fetch(url)
     const data = await response.json()
@@ -32,13 +32,13 @@ async function search_images(){
         image.alt = result.alt_description
 
         const img_link = document.createElement('a')
-        img_link.href = result.links.innerHTML
+        img_link.href = result.links.html;
         img_link.target = "_blank"
         img_link.textContent = result.alt_description
 
         img_wrapper.appendChild(image)
         img_wrapper.appendChild(img_link)
-        img_wrapper.appendChild(img_wrapper)
+        search_results.appendChild(img_wrapper)
         
     });
     page++
@@ -46,3 +46,13 @@ async function search_images(){
         show_more.style.display ="block"
     }
 }
+
+formInput.addEventListener("submit", (event)=>{
+    event.preventDefault();
+    page = 1;
+    search_images()
+})
+
+show_more.addEventListener("click", ()=>{
+    search_images()
+})
